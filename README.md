@@ -1,20 +1,134 @@
-# Coding Assignment 11 – Docker File (Vite + React)
+## What This Is
 
-## Description
-This project uses Docker to set up a development environment for a React application built with Vite.  
-The application displays a heading with the text **“Codin 1”** and runs on **localhost:7775**.
+This is a simple React app running in a Docker container. It displays "Codin 1" on the page and runs on port 7775.
 
----
+I used Vite instead of Create React App because it's faster and more modern.
 
 ## Requirements
-- Docker Desktop installed
-- Docker running
 
----
+You need Docker installed on your computer. That's pretty much it - everything else runs inside the container.
 
-## Steps to Run the Application
+## How to Run It
 
-### 1. Clone the Repository
+1. Clone this repo
+2. Open terminal and go to the project folder
+3. Build the Docker image:
+   ```bash
+   docker build -t coding-assignment11 .
+   ```
+4. Run the container:
+   ```bash
+   docker run -d -p 7775:7775 --name singh_paras_coding_assignment11 coding-assignment11
+   ```
+5. Open your browser and go to `http://localhost:7775`
+
+You should see "Codin 1" displayed on the page.
+
+## Project Files
+
+- `Dockerfile` - tells Docker how to build and run the app
+- `package.json` - lists all the npm packages needed
+- `vite.config.js` - configures Vite to use port 7775
+- `index.html` - main HTML file
+- `src/main.jsx` - the React code
+
+## Useful Docker Commands
+
+Check if container is running:
 ```bash
-git clone <your-github-repo-link>
-cd lastName_firstName_coding_assignment11
+docker ps
+```
+
+Stop the container:
+```bash
+docker stop singh_paras_coding_assignment11
+```
+
+Start it again:
+```bash
+docker start singh_paras_coding_assignment11
+```
+
+See what went wrong:
+```bash
+docker logs singh_paras_coding_assignment11
+```
+
+Remove the container:
+```bash
+docker stop singh_paras_coding_assignment11
+docker rm singh_paras_coding_assignment11
+```
+
+## The Dockerfile Explained
+
+```dockerfile
+FROM node:18-alpine
+```
+Uses Node.js version 18 on Alpine Linux (lightweight version).
+
+```dockerfile
+WORKDIR /singh_paras_site
+```
+Sets up the working directory inside the container.
+
+```dockerfile
+COPY package*.json ./
+RUN npm install
+```
+Copies package files and installs dependencies.
+
+```dockerfile
+COPY . .
+```
+Copies all the project files into the container.
+
+```dockerfile
+EXPOSE 7775
+```
+Opens port 7775.
+
+```dockerfile
+CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0", "--port", "7775"]
+```
+Starts the Vite dev server on port 7775.
+
+## If Something Goes Wrong
+
+**Port already in use:**
+```bash
+docker stop singh_paras_coding_assignment11
+docker rm singh_paras_coding_assignment11
+```
+Then try running it again.
+
+**Container keeps stopping:**
+Check the logs to see what's wrong:
+```bash
+docker logs singh_paras_coding_assignment11
+```
+
+**Made changes and they're not showing:**
+You need to rebuild:
+```bash
+docker stop singh_paras_coding_assignment11
+docker rm singh_paras_coding_assignment11
+docker build -t coding-assignment11 .
+docker run -d -p 7775:7775 --name singh_paras_coding_assignment11 coding-assignment11
+```
+
+## Why Vite?
+
+I went with Vite instead of Create React App because:
+- It's way faster to start up
+- Hot reload actually works properly
+- Smaller file sizes
+- More modern tooling
+
+## Notes
+
+The container name follows the assignment requirement: `lastName_firstName_coding_assignment11`
+
+The working directory inside the container is `singh_paras_site` as required.
+
+Everything runs on port 7775 as specified in the assignment.

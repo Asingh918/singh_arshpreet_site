@@ -14,11 +14,11 @@ You need Docker installed on your computer. That's pretty much it - everything e
 2. Open terminal and go to the project folder
 3. Build the Docker image:
    ```bash
-   docker build -t coding-assignment11 .
+   docker build -t singh_arshpreet_coding_assignment11 .
    ```
 4. Run the container:
    ```bash
-   docker run -d -p 7775:7775 --name singh_paras_coding_assignment11 coding-assignment11
+   docker run --name singh_arshpreet_coding_assignment11 -p 7775:7775 singh_arshpreet_coding_assignment11
    ```
 5. Open your browser and go to `http://localhost:7775`
 
@@ -41,23 +41,23 @@ docker ps
 
 Stop the container:
 ```bash
-docker stop singh_paras_coding_assignment11
+docker stop singh_arshpreet_coding_assignment11
 ```
 
 Start it again:
 ```bash
-docker start singh_paras_coding_assignment11
+docker start singh_arshpreet_coding_assignment11
 ```
 
 See what went wrong:
 ```bash
-docker logs singh_paras_coding_assignment11
+docker logs singh_arshpreet_coding_assignment11
 ```
 
 Remove the container:
 ```bash
-docker stop singh_paras_coding_assignment11
-docker rm singh_paras_coding_assignment11
+docker stop singh_arshpreet_coding_assignment11
+docker rm singh_arshpreet_coding_assignment11
 ```
 
 ## The Dockerfile Explained
@@ -68,7 +68,7 @@ FROM node:18-alpine
 Uses Node.js version 18 on Alpine Linux (lightweight version).
 
 ```dockerfile
-WORKDIR /singh_paras_site
+WORKDIR /singh_arshpreet_site
 ```
 Sets up the working directory inside the container.
 
@@ -97,24 +97,24 @@ Starts the Vite dev server on port 7775.
 
 **Port already in use:**
 ```bash
-docker stop singh_paras_coding_assignment11
-docker rm singh_paras_coding_assignment11
+docker stop singh_arshpreet_coding_assignment11
+docker rm singh_arshpreet_coding_assignment11
 ```
 Then try running it again.
 
 **Container keeps stopping:**
 Check the logs to see what's wrong:
 ```bash
-docker logs singh_paras_coding_assignment11
+docker logs singh_arshpreet_coding_assignment11
 ```
 
 **Made changes and they're not showing:**
 You need to rebuild:
 ```bash
-docker stop singh_paras_coding_assignment11
-docker rm singh_paras_coding_assignment11
-docker build -t coding-assignment11 .
-docker run -d -p 7775:7775 --name singh_paras_coding_assignment11 coding-assignment11
+docker stop singh_arshpreet_coding_assignment11
+docker rm singh_arshpreet_coding_assignment11
+docker build -t singh_arshpreet_coding-assignment11 .
+docker run -d -p 7775:7775 --name singh_arshpreet_coding_assignment11 coding-assignment11
 ```
 
 ## Why Vite?
@@ -127,8 +127,8 @@ I went with Vite instead of Create React App because:
 
 ## Notes
 
-The container name follows the assignment requirement: `lastName_firstName_coding_assignment11`
+The container name follows the assignment requirement: `singh_arshpreet_coding_assignment11`
 
-The working directory inside the container is `singh_paras_site` as required.
+The working directory inside the container is `singh_arshpreet_site` as required.
 
 Everything runs on port 7775 as specified in the assignment.

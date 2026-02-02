@@ -1,8 +1,8 @@
 # Use Node LTS
-FROM node:18
+FROM node:20
 
 # Set working directory
-WORKDIR /lastName_firstName_site
+WORKDIR /singh_arshpreet_site
 
 # Copy package files
 COPY package*.json ./

@@ -114,7 +114,7 @@ You need to rebuild:
 docker stop singh_arshpreet_coding_assignment11
 docker rm singh_arshpreet_coding_assignment11
 docker build -t singh_arshpreet_coding-assignment11 .
-docker run -d -p 7775:7775 --name singh_arshpreet_coding_assignment11 coding-assignment11
+docker run --name singh_arshpreet_coding_assignment11 -p 7775:7775 singh_arshpreet_coding_assignment11
 ```
 
 ## Why Vite?
